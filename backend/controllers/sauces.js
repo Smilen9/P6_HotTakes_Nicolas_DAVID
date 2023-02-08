@@ -2,7 +2,6 @@ const Sauce = require("../models/Sauce");
 const fs = require("fs"); //file system, accès aux fonctions pour de modifier le système de fichiers et supprimer les fichiers
 
 //Pour creer une sauce
-
 exports.createSauce = (req, res, next) => {
   const sauceObject = JSON.parse(req.body.sauce);
   delete sauceObject._id;
@@ -124,7 +123,7 @@ exports.likeDislikeSauce = (req, res, next) => {
             if (sauce.usersDisliked.includes(userId)) { 
               Sauce.updateOne({ _id: sauceId }, { $pull: { usersDisliked: userId }, $inc: { dislikes: -1 }})
                 .then(() => res.status(200).json({ message: `Neutre` }))
-                .catch((error) => res.status(400).json({ error }))
+                // .catch((error) => res.status(400).json({ error }))
             }
           })
           .catch((error) => res.status(404).json({ error }))
