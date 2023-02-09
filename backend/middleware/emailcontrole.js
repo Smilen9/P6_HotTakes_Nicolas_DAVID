@@ -1,4 +1,4 @@
-//---Middleware Regex du mail
+//-------------- Regex du mail
 
 module.exports = (req, res, next) => {
     const validEmail = (email) => {

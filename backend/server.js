@@ -13,11 +13,11 @@ const normalizePort = val => {
   return false;
 };
 
-//Renvoie du port
+//--------------  Renvoie du port
 const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
-//Recherche les erreurs
+//--------------  Recherche les erreurs
 const errorHandler = error => {
   if (error.syscall !== 'listen') {
     throw error;
@@ -47,5 +47,5 @@ server.on('listening', () => {
   console.log('Listening on ' + bind);
 });
 
-//Ecouteur d'événement du port
+//-------- Ecouteur d'événement du port
 server.listen(port);

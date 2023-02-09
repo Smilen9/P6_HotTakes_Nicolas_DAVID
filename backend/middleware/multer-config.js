@@ -1,5 +1,4 @@
-//Multer de gérer les fichiers entrants dans les requêtes HTTP
-
+//------------ Implémenter les téléchargements de fichiers
 const multer = require('multer');
 
 const MIME_TYPES = {
@@ -7,6 +6,9 @@ const MIME_TYPES = {
   'image/jpeg': 'jpg',
   'image/png': 'png'
 };
+
+
+//------      configuration de multer -------
 
 const storage = multer.diskStorage({ //Où est ce que les fichiers entrant vont être stocker
   destination: (req, file, callback) => {

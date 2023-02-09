@@ -1,14 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/user');
-
 const sauceRoutes = require ('./routes/sauces')
 const path = require('path');
-
 const dotenv = require('dotenv').config();
 console.log(dotenv.parsed)
 
-// Connexion à Moogoose 
+//--------------- Connexion à Moogoose 
 mongoose.connect('mongodb+srv://Smilen:Nico@cluster0.qk0vj3k.mongodb.net/?retryWrites=true&w=majority',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
@@ -16,12 +14,10 @@ mongoose.connect('mongodb+srv://Smilen:Nico@cluster0.qk0vj3k.mongodb.net/?retryW
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 
-
+//---intercepte toutes les requêtes qui contiennent du JSON pour le mettre à disposition sur l'objet requête dans req.body
+// remplace body parser
 const app = express();
-
 app.use(express.json());
-
-//CORS : Ajout des headers
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -29,7 +25,6 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
   next();
 });
-
 
 app.use('/api/auth', userRoutes);
 app.use('/api/sauces', sauceRoutes);

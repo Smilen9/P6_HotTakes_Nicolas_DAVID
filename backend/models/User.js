@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator'); 
 
 // Modèle pour l'inscription ou la connection
-
 const userSchema = mongoose.Schema({
   email: { type: String, required: true, unique: true }, //unique pour ne pas avoir 2 utilisateurs avec la même adresse email
   password: { type: String, required: true }

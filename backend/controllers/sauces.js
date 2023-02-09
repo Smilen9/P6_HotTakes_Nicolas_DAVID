@@ -1,7 +1,7 @@
 const Sauce = require("../models/Sauce");
 const fs = require("fs"); //file system, accès aux fonctions pour de modifier le système de fichiers et supprimer les fichiers
 
-//Pour creer une sauce
+//----------- Pour creer/Enregistrer une sauce-----------
 exports.createSauce = (req, res, next) => {
   const sauceObject = JSON.parse(req.body.sauce);
   delete sauceObject._id;
@@ -25,7 +25,7 @@ exports.createSauce = (req, res, next) => {
 };
 
 
-//Pour afficher une sauce
+//------------ Pour afficher une sauce----------
 exports.getOneSauce = (req, res, next) => {
   Sauce.findOne({
     _id: req.params.id,
@@ -40,7 +40,7 @@ exports.getOneSauce = (req, res, next) => {
     });
 };
 
-//Pour modifier une sauce
+//---------------- Pour modifier une sauce
 exports.modifySauce = (req, res, next) => {
   Sauce.findOne({ _id: req.params.id })
         .then(sauce =>{
@@ -63,7 +63,7 @@ exports.modifySauce = (req, res, next) => {
         .catch(error => res.status(500).json({ message: error.message }));
 }
 
-//Pour supprimer une sauce
+//------------------- Pour supprimer une sauce
 exports.deleteSauce = (req, res, next) => {
   Sauce.findOne({ _id: req.params.id })
     .then((sauce) => {
@@ -85,7 +85,7 @@ exports.deleteSauce = (req, res, next) => {
     });
 };
 
-//Pour afficher toutes les sauces
+//---------------------- Pour afficher toutes les sauces
 exports.getAllSauce = (req, res, next) => {
   Sauce.find()
     .then((sauces) => {
@@ -98,7 +98,7 @@ exports.getAllSauce = (req, res, next) => {
     });
 };
 
-//Pour liker et disliker une sauce
+//---------------------- Pour liker et disliker une sauce
 exports.likeDislikeSauce = (req, res, next) => {
   let like = req.body.like
   let userId = req.body.userId
