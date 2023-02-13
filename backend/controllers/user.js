@@ -17,7 +17,7 @@ exports.signup = (req, res, next) => {
       .catch(error => res.status(500).json({ error }));
   };
 
-    //Pour permettre a l'utilisateur de se connecter avec un compte deja existant 
+    //Pour permettre a l'utilisateur de se connecter avec un compte déjà existant 
   exports.login = (req, res, next) => {
     User.findOne({ email: req.body.email })
         .then(user => {
