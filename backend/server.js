@@ -1,5 +1,7 @@
-const http = require('http');
-const app = require('./app');
+//****************Création d'un serveur Node ****************/
+
+const http = require('http'); // Importation du package HTTP natif de Node
+const app = require('./app'); // Importation de notre propre fichier "app.js", REQUIRE permet d'omettre le .JS
 
 const normalizePort = val => {
   const port = parseInt(val, 10);
@@ -13,7 +15,7 @@ const normalizePort = val => {
   return false;
 };
 
-//--------------  Renvoie du port
+//--------------  Renvoie d'un port valide
 const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
