@@ -18,7 +18,6 @@ exports.signup = (req, res, next) => {
   };
 
     //Pour permettre a l'utilisateur de se connecter avec un compte deja existant 
-
   exports.login = (req, res, next) => {
     User.findOne({ email: req.body.email })
         .then(user => {
