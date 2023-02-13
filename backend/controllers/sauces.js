@@ -65,7 +65,7 @@ exports.modifySauce = (req, res, next) => {
 
 //------------------- Pour supprimer une sauce
 exports.deleteSauce = (req, res, next) => {
-  Sauce.findOne({ _id: req.params.id })
+  Sauce.findOne({ _id: req.params.id }) // findOne pour trouver un seul document
     .then((sauce) => {
       if (sauce.userId != req.auth.userId) {
         res.status(401).json({ message: "Not authorized" });
@@ -87,7 +87,7 @@ exports.deleteSauce = (req, res, next) => {
 
 //---------------------- Pour afficher toutes les sauces
 exports.getAllSauce = (req, res, next) => {
-  Sauce.find()
+  Sauce.find() // find pour trouver plusieurs documents
     .then((sauces) => {
       res.status(200).json(sauces);
     })
