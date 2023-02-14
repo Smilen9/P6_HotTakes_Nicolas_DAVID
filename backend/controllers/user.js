@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt'); // Importation "bcrypt" pour le hash du mot de passe
-const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken'); //Permet d'identifier un utilisateur
 const User = require ('../models/User') // Importation du models
 
   //Pour permettre a l'utilisateur de s'inscrire en tant que nouvel utilisateur avec " signup"
@@ -31,10 +31,10 @@ exports.signup = (req, res, next) => {
                     }
                     res.status(200).json({
                         userId: user._id,
-                        token: jwt.sign(
-                            { userId: user._id },
-                            process.env.TOKEN,
-                            { expiresIn: '24h' }
+                        token: jwt.sign(    //fonction sign de JsonWebToken avec 3 arguments
+                            { userId: user._id }, // donnée que l'on encode ' objet avec l'userID qui prend l'identifiant de l'utilisateur
+                            process.env.TOKEN,    // clef secrete d'encodage /dans le futur utilisé une chaine de caractere longue et aléatoire
+                            { expiresIn: '24h' }  // argument de configuration, application d'une expiration du TOKEN
                         )
                     });
                 })
