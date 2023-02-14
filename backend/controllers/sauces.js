@@ -42,7 +42,7 @@ exports.getOneSauce = (req, res, next) => {
 
 //---------------- Pour modifier une sauce
 exports.modifySauce = (req, res, next) => {
-  Sauce.findOne({ _id: req.params.id })
+  Sauce.findOne({ _id: req.params.id }) // Recherche une sauce
         .then(sauce =>{
             if (sauce.userId != req.auth.userId){
                 res.status(401).json({
