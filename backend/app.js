@@ -4,8 +4,7 @@ const userRoutes = require('./routes/user');
 const sauceRoutes = require ('./routes/sauces')
 const path = require('path');
 const dotenv = require('dotenv').config();
-// const helmet = require('helmet');
-console.log(dotenv.parsed)
+
 
 //--------------- Connexion à Moogoose 
 mongoose.connect(process.env.PASSWORD,

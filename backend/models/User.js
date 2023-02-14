@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
-
-//Pour prevalider les informations avant leur enregistrement et ainsi eviter les erreurs pouvant être générer par mangoDB
-const uniqueValidator = require('mongoose-unique-validator'); // Evite d'avoir 2 utilisateurs avec deux adresse email pareille 
+const uniqueValidator = require('mongoose-unique-validator'); // Evite d'avoir 2 utilisateurs avec la meme adresse email
+                                                            // Permet d'avoir un champ unique dans la base de donnée MongoDB
 
 // Modèle pour l'inscription ou la connection
 const userSchema = mongoose.Schema({
@@ -9,7 +8,8 @@ const userSchema = mongoose.Schema({
   password: { type: String, required: true }
 });
 
-userSchema.plugin(uniqueValidator);
+userSchema.plugin(uniqueValidator); //Permet d'avoir un seul et unique utilisateur avec la meme adresse email + password
+                                    //On l'inject dans notre schema d'utilisateur
 
 //Exportation du schema
 module.exports = mongoose.model('User', userSchema);

@@ -5,7 +5,7 @@ const emailcontrole = require('../middleware/emailcontrole');
 const passwordcontrole = require('../middleware/passwordcontrole');
 
 
-router.post('/signup', emailcontrole, passwordcontrole, userCtrl.signup); //Pour s'inscrire
+router.post('/signup', emailcontrole, passwordcontrole, userCtrl.signup); //Pour s'inscrire //On ajoute les middleware d'email et password
 router.post('/login', userCtrl.login); //Pour se connecter
 
 module.exports = router;                            

@@ -1,14 +1,16 @@
-//------------ Implémenter les téléchargements de fichiers
+//------------ Implémenter et gérer les téléchargements de fichiers
+//**************************************************/
 const multer = require('multer');
 
-const MIME_TYPES = {
+// MIME = Multipurpose Internet Mail Extensions
+const MIME_TYPES = { // formats d'image associé à leurs extensions de fichiers correspondantes.
   'image/jpg': 'jpg',
   'image/jpeg': 'jpg',
   'image/png': 'png'
 };
 
 
-//------      configuration de multer -------
+//------ configuration de multer -------
 
 const storage = multer.diskStorage({ //Où est ce que les fichiers entrant vont être stocker
   destination: (req, file, callback) => {
