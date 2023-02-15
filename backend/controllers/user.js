@@ -31,7 +31,7 @@ exports.signup = (req, res, next) => {
                     }
                     res.status(200).json({
                         userId: user._id,
-                        token: jwt.sign(    //fonction sign de JsonWebToken avec 3 arguments
+                        token: jwt.sign(          //fonction sign de JsonWebToken avec 3 arguments
                             { userId: user._id }, // donnée que l'on encode ' objet avec l'userID qui prend l'identifiant de l'utilisateur
                             process.env.TOKEN,    // clef secrete d'encodage /dans le futur utilisé une chaine de caractere longue et aléatoire
                             { expiresIn: '24h' }  // argument de configuration, application d'une expiration du TOKEN
