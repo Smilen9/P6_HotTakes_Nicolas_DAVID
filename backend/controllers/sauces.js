@@ -13,7 +13,6 @@ exports.createSauce = (req, res, next) => {
       req.file.filename
     }`,
   });
-
   sauce
     .save()
     .then(() => {
@@ -71,7 +70,7 @@ exports.deleteSauce = (req, res, next) => {
         res.status(401).json({ message: "Not authorized" });
       } else {
         const filename = sauce.imageUrl.split("/images/")[1];
-        fs.unlink(`images/${filename}`, () => {
+        fs.unlink(`images/${filename}`, () => {    //Unlink permet de supprimer un fichier a partir de son chemin
           Sauce.deleteOne({ _id: req.params.id })
             .then(() => {
               res.status(200).json({ message: "Sauce supprimé !" });

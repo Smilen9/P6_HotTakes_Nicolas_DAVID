@@ -19,18 +19,17 @@ mongoose.connect(process.env.PASSWORD,
 const app = express();
 app.use(express.json());
 
- //CORS
+ //CORS = sécurité, permet d'éviter les attaques "Cross-Site Request Forgery" (CSRF)
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
   next();
 });
-// app.use(helmet)({
-//   crossOriginResourcePolicy: { policy: "same-site"}
-// })
+
+// routes qui seront utilisées par l'application
 app.use('/api/auth', userRoutes);
 app.use('/api/sauces', sauceRoutes);
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
-module.exports = app;
+module.exports = app; // On rend le fichier app disponible

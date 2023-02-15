@@ -3,6 +3,7 @@
 const http = require('http'); // Importation du package HTTP natif de Node
 const app = require('./app'); // Importation de notre propre fichier "app.js", REQUIRE permet d'omettre le .JS
 
+//fonction pour normaliser une valeur en un numéro de port valide
 const normalizePort = val => {
   const port = parseInt(val, 10);
 
@@ -17,9 +18,9 @@ const normalizePort = val => {
 
 //--------------  Renvoie d'un port valide
 const port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);
+app.set('port', port); //Définir le port sur lequel l'application doit être écouté
 
-//--------------  Recherche les erreurs
+//--------------  Recherche les erreurs systeme(syscall) liées au réseau
 const errorHandler = error => {
   if (error.syscall !== 'listen') {
     throw error;

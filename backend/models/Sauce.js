@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-// Schéma de données pour une sauce
+//Schéma de données pour une sauce
 //chaque objet est appelé "document"
 
 const sauceSchema = mongoose.Schema({
