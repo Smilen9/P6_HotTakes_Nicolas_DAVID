@@ -26,7 +26,7 @@ const errorHandler = error => {
     throw error;
   }
 // Si la condition est remplie, la fonction détermine si l'adresse du serveur est une chaîne de caractères ou un nombre
-// ON affecte la valeur de la variable "bind" en conséquence
+// On affecte la valeur de la variable "bind" en conséquence
   const address = server.address();
   const bind = typeof address === 'string' ? 'pipe ' + address : 'port: ' + port;
   switch (error.code) {
@@ -34,7 +34,7 @@ const errorHandler = error => {
       console.error(bind + ' requires elevated privileges.');
       process.exit(1);
       break;
-    case 'EADDRINUSE': //Si l'adresse est deha en cour d'utilisation
+    case 'EADDRINUSE': //Si l'adresse est deja en cour d'utilisation
       console.error(bind + ' is already in use.');
       process.exit(1);
       break;

@@ -1,3 +1,5 @@
+//Fonction pour intéragir avec le serveur pour la lecture et l'écriture
+
 const Sauce = require("../models/Sauce");
 const fs = require("fs"); //file system, accès aux fonctions pour de modifier le système de fichiers et supprimer les fichiers
 
