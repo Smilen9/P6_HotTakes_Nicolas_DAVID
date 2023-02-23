@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt'); // Importation "bcrypt" pour le hash du mot de passe
-const jwt = require('jsonwebtoken'); //Permet d'identifier un utilisateur
+const jwt = require('jsonwebtoken'); //Permet d'identifier un utilisateur, preuve d'authentification
 const User = require ('../models/User') // Importation du models
 
   //Pour permettre a l'utilisateur de s'inscrire en tant que nouvel utilisateur avec " signup"

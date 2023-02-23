@@ -1,8 +1,9 @@
 // mise en place de password validator
-var passwordValidator = require('password-validator'); // permet de définir des regles pour le mot de passe
-                                                       //
+let passwordValidator = require('password-validator'); // permet de définir des regles pour le mot de pass
+const alert = require('alert');
+                                                       
 // Création du schéma
-var schemaPassword = new passwordValidator();
+let schemaPassword = new passwordValidator();
 
 // regle du schéma pour mot de passe grace au plugin "password-validator"
 schemaPassword
@@ -18,6 +19,7 @@ module.exports = (req, res, next) => {
     if(schemaPassword.validate(req.body.password)){
         return next();
     }else{
-        return res.status(400).json({error: `mot de passe invalide ${schemaPassword.validate('req.body.password', { list: true })}` })
+        alert("Votre mot de passe doit comporter au moins 1 maj, 1min, 7caracteres minimum et 1 chiffre"); // Affichage d'un popup si le mot de passe n'est pas correct
+        return res.status(400).json({message: `mot de passe invalide ${schemaPassword.validate('req.body.password', { list: true })}` });
     }
 }

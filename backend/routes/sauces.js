@@ -1,4 +1,4 @@
-
+// Gerer les requetes pour les parties specifique de la sauce
 const express = require('express');
 const router = express.Router(); // Pour créer des routeurs séparés pour chaque route principale 
 const auth = require('../middleware/user');

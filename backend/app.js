@@ -1,9 +1,10 @@
-const express = require('express');
-const mongoose = require('mongoose');
+const express = require('express'); // framework nodeJS
+const mongoose = require('mongoose');// Module nodeJS pour communication avec server
 const userRoutes = require('./routes/user');
 const sauceRoutes = require ('./routes/sauces')
 const path = require('path');
 const dotenv = require('dotenv').config();
+const helmet = require('helmet');//Securité pour ajouter des en-tetes HTTP
 
 
 //--------------- Connexion à Moogoose 
@@ -18,6 +19,11 @@ mongoose.connect(process.env.PASSWORD,
 // remplace body parser
 const app = express();
 app.use(express.json());
+
+//Sécuriser les en tete HTTP
+app.use(helmet({
+  crossOriginResourcePolicy: { policy: "same-site" }
+}));
 
  //CORS = sécurité, permet d'éviter les attaques "Cross-Site Request Forgery" (CSRF)
 app.use((req, res, next) => {
